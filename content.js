@@ -19,7 +19,8 @@ window.CONTENT = {
     { id: "analiz",     ad: "Analiz & Sistemler",      emoji: "💻" },
     { id: "ekosistem",  ad: "Havacılık Ekosistemi",    emoji: "📋" },
     { id: "ileri",      ad: "İleri / Keşif",           emoji: "🚀" },
-    { id: "vaka",       ad: "Vaka",                    emoji: "🧩" }
+    { id: "vaka",       ad: "Vaka",                    emoji: "🧩" },
+    { id: "tasarim",    ad: "Uçak Tasarımı",           emoji: "📐" }
   ],
 
   dersler: [
@@ -53,6 +54,7 @@ window.CONTENT = {
     { id: "mod-aero",      kategori: "temel", ad: "Aerodinamik",                        branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
 
     { id: "mod-ucusmek",   kategori: "ucus", ad: "Uçuş Mekaniği ve Performans",         branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
+    { id: "mod-motorsuz",  kategori: "ucus", ad: "Motorsuz Uçuş Prensibi",              branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
     { id: "mod-kararlilik",kategori: "ucus", ad: "Uçuş Kararlılığı",                    branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
     { id: "mod-otokontrol",kategori: "ucus", ad: "Otomatik Kontrol",                    branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
 
@@ -62,16 +64,19 @@ window.CONTENT = {
 
     { id: "mod-cfdfea",    kategori: "analiz", ad: "CFD & FEA",                          branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
     { id: "mod-aviyonik",  kategori: "analiz", ad: "Aviyonik, Sensörler ve Otonomi",      branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
-    { id: "mod-iha",       kategori: "analiz", ad: "İHA ve Döner Kanat",                 branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
 
     { id: "mod-uretimileri", kategori: "ekosistem", ad: "Üretim/Kalite — İleri Uygulamalar", branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
     { id: "mod-elverislilik",kategori: "ekosistem", ad: "Uçuşa Elverişlilik ve Operasyon",  branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
+    { id: "mod-mevzuat",     kategori: "ekosistem", ad: "Havacılık Mevzuatı",              branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
+    { id: "mod-havacilik-tip",kategori: "ekosistem", ad: "Havacılık Tıbbı",                branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
 
     { id: "mod-roket",     kategori: "ileri", ad: "Roket Sistemleri",                    branslar: ["ucak"], aciklama: "Opsiyonel modül — içerik hazırlanıyor.", konular: [] },
+    { id: "mod-iha",       kategori: "ileri", ad: "İHA ve Döner Kanat",                  branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
+    { id: "mod-yapayzeka", kategori: "ileri", ad: "Havacılıkta Yapay Zeka",              branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
     { id: "mod-teknoloji", kategori: "ileri", ad: "Güncel Teknolojiler",                 branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
 
     { id: "mod-kazalar",   kategori: "vaka", ad: "Uçak Kazaları",                        branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
-    { id: "mod-tasarim",   kategori: "vaka", ad: "Uçak Tasarımı",                        branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
+    { id: "mod-tasarim",   kategori: "tasarim", ad: "Uçak Tasarımı",                     branslar: ["ucak"], aciklama: "İçerik hazırlanıyor — yakında eklenecek.", konular: [] },
     {
       id: "mod1", ad: "Mekaniğin Temelleri", branslar: ["ucak", "uzay"],
       aciklama: "Statik, dinamik ve şekil değiştiren cisimler mekaniği",
