@@ -269,7 +269,7 @@ const D = {
   ilerleme: Depo.al("mo.ilerleme", {}),
   kaydedilen: Depo.al("mo.kaydedilen", []),
   eksikler: Depo.al("mo.eksikler", []),
-  kavram:   Depo.al("mo.kavram", { tarih:null, indeks:0, ogrenildi:false, hak:3 }),
+  kavram:   Depo.al("mo.kavram", { zaman:0, indeks:0, ogrenildi:false, hak:30 }),
   ayar:     Depo.al("mo.ayar", { yazi:17, serif:false }),
   sonKonu:  Depo.al("mo.sonKonu", null)
 };
@@ -307,7 +307,6 @@ let gecmis = [];
 const Sekmeler = [
   { id:"ana",   ad:"Ana sayfa",   ik:"ev" },
   { id:"ogren", ad:"Öğren",       ik:"kitap" },
-  { id:"muh",   ad:"Kavramlar",   ik:"rozet" },
   { id:"kesfet",ad:"Keşfet",      ik:"pusula" },
   { id:"ben",   ad:"Ben",         ik:"profil" }
 ];
@@ -394,7 +393,6 @@ function ciz(){
   else if (S === "ders")    { ustCiz(geri, "Öğren"); dersSayfa(g); }
   else if (S === "konu")    { konuSayfa(g, u); }
   else if (S === "test")    { ustCiz(geri, "Test"); testSayfa(g); }
-  else if (S === "muh")     { ustCiz(null, "Kavramlar"); muhSayfa(g); }
   else if (S === "kesfet")  { ustCiz(null, "Keşfet"); kesfetSayfa(g); }
   else if (S === "gk")      { ustCiz(geri, "Genel kültür"); gkSayfa(g); }
   else if (S === "gkkonu")  { gkKonuSayfa(g, u); }
@@ -419,7 +417,7 @@ function ciz(){
 function menuCiz(){
   const m = el("menu");
   const kok = { ana:"ana", ogren:"ogren", ders:"ogren", konu:"ogren", test:"ogren",
-    muh:"muh", eksik:"muh", kesfet:"kesfet", firma:"kesfet", haber:"kesfet",
+    eksik:"ben", kesfet:"kesfet", firma:"kesfet", haber:"kesfet",
     ben:"ben", ayar:"ben", notlar:"ben" }[yol.s] || "";
   m.innerHTML = Sekmeler.map(s =>
     '<button data-s="'+s.id+'" class="'+(kok===s.id?"aktif":"")+'" aria-current="'+(kok===s.id?"page":"false")+'">'+
@@ -485,10 +483,11 @@ function kurulumGoster(){
 
 /* ---------------- Ana sayfa ---------------- */
 function gununKavrami(){
-  const t = bugun();
-  if (D.kavram.tarih !== t){
-    const g = Math.floor(Date.now() / 86400000);
-    D.kavram = { tarih:t, indeks:g % uygunKavramlar().length, ogrenildi:false, hak:3 };
+  if (!uygunKavramlar().length) return null;
+  const simdi = Date.now();
+  if (simdi - D.kavram.zaman >= 86400000){
+    const g = Math.floor(simdi / 86400000);
+    D.kavram = { zaman:simdi, indeks:g % uygunKavramlar().length, ogrenildi:false, hak:30 };
     kaydet("kavram");
   }
   return uygunKavramlar()[D.kavram.indeks % uygunKavramlar().length];
@@ -500,9 +499,16 @@ function uygunKavramlar(){
 
 function anaSayfa(g){
   const k = gununKavrami();
-  const kayitli = D.kaydedilen.indexOf(k.id) !== -1;
+  const kayitli = k ? D.kaydedilen.indexOf(k.id) !== -1 : false;
   let h = "";
 
+  if (!k){
+    // Henüz kavram eklenmedi — boş durum
+    h += '<div style="background:linear-gradient(135deg,#14213D 0%,#1e3a5f 100%);border-radius:var(--r);padding:24px 20px;margin-top:4px;margin-bottom:14px;text-align:center">' +
+      '<div style="color:rgba(255,255,255,.6);font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px">Günün kavramı</div>' +
+      '<p style="color:rgba(255,255,255,.8);font-size:.95rem;margin:0">Kavramlar yakında burada olacak.</p>' +
+      '</div>';
+  } else {
   // Günün kavramı — dikkat çekici kart
   h += '<div style="background:linear-gradient(135deg,#14213D 0%,#1e3a5f 100%);border-radius:var(--r);padding:20px 20px 16px;margin-top:4px;margin-bottom:14px">' +
     '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">' +
@@ -535,8 +541,9 @@ function anaSayfa(g){
     (D.kavram.ogrenildi && D.kavram.hak > 0
       ? '<button style="width:100%;margin-top:9px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:none;border-radius:var(--r-k);padding:10px;font-family:inherit;font-size:.9rem;cursor:pointer" id="yenib">Yeni kavram getir ('+D.kavram.hak+' hak kaldı)</button>' : "") +
     (D.kavram.ogrenildi && D.kavram.hak === 0
-      ? '<p style="text-align:center;margin:10px 0 0;color:rgba(255,255,255,.4);font-size:.8rem">Bugünlük hakların bitti. Yarın yeni kavram seni bekliyor.</p>' : "") +
+      ? '<p style="text-align:center;margin:10px 0 0;color:rgba(255,255,255,.4);font-size:.8rem">Bu kavram için hakların bitti. 24 saat sonra yeni bir kavram seni bekliyor.</p>' : "") +
     '</div>';
+  }
 
   if (D.sonKonu){
     const bilgi = konuBul(D.sonKonu);
@@ -566,7 +573,8 @@ function anaSayfa(g){
   if (ob && !D.kavram.ogrenildi) ob.addEventListener("click", () => {
     D.kavram.ogrenildi = true; kaydet("kavram"); ciz();
   });
-  el("kayb").addEventListener("click", () => {
+  const kayb = el("kayb");
+  if (kayb) kayb.addEventListener("click", () => {
     const i = D.kaydedilen.indexOf(k.id);
     if (i === -1) D.kaydedilen.push(k.id); else D.kaydedilen.splice(i,1);
     kaydet("kaydedilen"); ciz();
@@ -732,11 +740,9 @@ function konuSayfa(g, u){
       '<div class="kart" style="text-align:left;max-width:340px;margin:0 auto">' +
         '<div class="mini" style="margin-bottom:8px">Bu arada şunları yapabilirsin</div>' +
         '<button class="satir" id="kd_bernoulli"><span>Bernoulli denklemini oku</span>'+ikon("sag",18)+'</button>' +
-        '<button class="satir" id="kd_kavram"><span>Kavram kartlarına bak</span>'+ikon("sag",18)+'</button>' +
         '<button class="satir" id="kd_gk"><span>Genel kültür yazısı oku</span>'+ikon("sag",18)+'</button>' +
       '</div></div>';
     el("kd_bernoulli").addEventListener("click", () => git({s:"konu", id:"m3-2"}));
-    el("kd_kavram").addEventListener("click", () => sekme("muh"));
     el("kd_gk").addEventListener("click", () => git({s:"gkkonu", id:"gk1-8"}));
     return;
   }
@@ -1036,41 +1042,14 @@ function sonucCiz(g){
   });
 }
 
-/* ---------------- Mühendis oluyorum ---------------- */
-function muhSayfa(g){
-  const kats = {};
-  uygunKavramlar().forEach(k => { (kats[k.kategori] = kats[k.kategori] || []).push(k); });
-  let h = '<h1 style="margin:6px 0 4px">Mühendis oluyorum</h1>' +
-    '<p class="kucuk" style="margin-bottom:16px">Mülakatlarda ve sahada en sık karşına çıkacak kavramlar</p>';
-
-  h += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">' +
-    '<button class="kart" id="kayitb" style="margin:0;text-align:left">' +
-      '<div style="color:var(--rota)">'+ikon("imle",20)+'</div>' +
-      '<div style="font-weight:600;margin-top:4px">Kaydettiklerim</div>' +
-      '<div class="mini">'+D.kaydedilen.length+' kavram</div></button>' +
-    '<button class="kart" id="eksikb" style="margin:0;text-align:left">' +
-      '<div style="color:var(--rota)">'+ikon("uyari",20)+'</div>' +
-      '<div style="font-weight:600;margin-top:4px">Eksiklerim</div>' +
-      '<div class="mini">'+D.eksikler.length+' başlık</div></button></div>';
-
-  Object.keys(kats).forEach(kat => {
-    h += '<h3 style="margin:18px 0 8px">'+e(kat)+'</h3><div class="kart" style="padding:0 18px">' +
-      kats[kat].map(k => '<button class="satir" data-kv="'+k.id+'">' +
-        '<span style="min-width:0"><span style="display:block;font-weight:500">'+e(k.ad)+'</span>' +
-        '<span class="mini">'+e(k.en)+'</span></span>' +
-        (D.kaydedilen.indexOf(k.id) !== -1 ? '<span style="color:var(--rota);flex:none">'+ikon("imle",18)+'</span>'
-          : '<span style="color:var(--metin3);flex:none">'+ikon("sag",18)+'</span>') +
-        '</button>').join("") + '</div>';
-  });
-  g.innerHTML = h;
-  el("kayitb").addEventListener("click", kaydedilenGoster);
-  el("eksikb").addEventListener("click", () => git({ s:"eksik" }));
-  g.querySelectorAll("[data-kv]").forEach(b =>
-    b.addEventListener("click", () => kavramGoster(b.dataset.kv)));
-}
-
+/* ---------------- Kavram kartı ---------------- */
 function kavramGoster(id){
   const k = C.kavramlar.find(x => x.id === id);
+  if (!k){
+    ac('<h2>Bu kavram artık yok</h2><p class="kucuk" style="margin-top:10px">İçerik güncellendi, bu kayıt kaldırıldı.</p>' +
+      '<button class="btn ikincil" onclick="window.__kapat()" style="margin-top:12px">Tamam</button>');
+    return;
+  }
   const kayitli = D.kaydedilen.indexOf(id) !== -1;
   ac('<div class="rozetler" style="margin-bottom:8px"><span class="rozet">'+e(k.kategori)+'</span>' +
     (k.mulakat ? '<span class="rozet sari">Mülakatta sık sorulur</span>' : "") + '</div>' +
