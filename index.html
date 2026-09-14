@@ -529,8 +529,14 @@ function anaSayfa(g){
     '<h2 style="color:#fff;font-size:1.45rem;margin-bottom:2px">'+e(k.ad)+'</h2>' +
     '<div style="color:rgba(255,255,255,.5);font-size:.82rem;margin-bottom:14px">'+e(k.en)+'</div>' +
     '<p style="color:rgba(255,255,255,.85);font-size:.96rem;margin-bottom:14px;line-height:1.6">'+e(k.tanim)+'</p>' +
+    (k.ornek ? '<div style="background:rgba(255,255,255,.06);border-radius:var(--r-k);padding:12px 14px;margin-bottom:10px">' +
+      '<div style="color:rgba(255,255,255,.5);font-size:.75rem;margin-bottom:4px">💡 Basit Örnek</div>' +
+      '<div style="color:rgba(255,255,255,.8);font-size:.9rem;line-height:1.5">'+e(k.ornek)+'</div></div>' : "") +
+    (k.onem ? '<div style="background:rgba(255,255,255,.06);border-radius:var(--r-k);padding:12px 14px;margin-bottom:14px">' +
+      '<div style="color:rgba(255,255,255,.5);font-size:.75rem;margin-bottom:4px">🔧 Mühendislikte Önemi</div>' +
+      '<div style="color:rgba(255,255,255,.8);font-size:.9rem;line-height:1.5">'+e(k.onem)+'</div></div>' : "") +
     '<div style="background:rgba(255,255,255,.08);border-radius:var(--r-k);padding:13px 15px;margin-bottom:14px">' +
-      '<div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-bottom:5px">Mülakatta sorulursa</div>' +
+      '<div style="color:rgba(255,255,255,.5);font-size:.78rem;margin-bottom:5px">🎯 Mülakatta sorulursa</div>' +
       '<div style="color:#fff;font-weight:600;font-size:.95rem;margin-bottom:6px">'+e(k.soru)+'</div>' +
       '<div style="color:rgba(255,255,255,.75);font-size:.9rem;line-height:1.55">'+e(k.cevap)+'</div>' +
     '</div>' +
@@ -1054,9 +1060,15 @@ function kavramGoster(id){
   ac('<div class="rozetler" style="margin-bottom:8px"><span class="rozet">'+e(k.kategori)+'</span>' +
     (k.mulakat ? '<span class="rozet sari">Mülakatta sık sorulur</span>' : "") + '</div>' +
     '<h2>'+e(k.ad)+'</h2><div class="mini" style="margin-bottom:12px">'+e(k.en)+'</div>' +
-    '<p style="font-size:.97rem">'+e(k.tanim)+'</p>' +
+    '<p style="font-size:.97rem;margin-bottom:12px">'+e(k.tanim)+'</p>' +
+    (k.ornek ? '<div style="background:var(--kart2);border-radius:var(--r-k);padding:11px 13px;margin-bottom:8px">' +
+      '<div class="mini" style="margin-bottom:3px">💡 Basit Örnek</div>' +
+      '<div style="font-size:.93rem;color:var(--metin2)">'+e(k.ornek)+'</div></div>' : "") +
+    (k.onem ? '<div style="background:var(--kart2);border-radius:var(--r-k);padding:11px 13px;margin-bottom:12px">' +
+      '<div class="mini" style="margin-bottom:3px">🔧 Mühendislikte Önemi</div>' +
+      '<div style="font-size:.93rem;color:var(--metin2)">'+e(k.onem)+'</div></div>' : "") +
     '<div style="background:var(--kart2);border-radius:var(--r-k);padding:12px 14px;margin-bottom:16px">' +
-      '<div class="mini" style="margin-bottom:4px">Mülakatta sorulursa</div>' +
+      '<div class="mini" style="margin-bottom:4px">🎯 Mülakatta sorulursa</div>' +
       '<div style="font-weight:600;font-size:.95rem;margin-bottom:4px">'+e(k.soru)+'</div>' +
       '<div class="kucuk">'+e(k.cevap)+'</div></div>' +
     '<button class="btn '+(kayitli?"ikincil":"")+'" id="kvkay">' +
