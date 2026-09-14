@@ -37,13 +37,13 @@ window.CONTENT = {
         { id: "g7",  ad: "Kontrol Yüzeyleri",                             sure: 20, durum: "hazir",   seviye: "Temel", mulakat: true },
         { id: "g8",  ad: "Uçağın İçinde Neler Var?",                      sure: 22, durum: "hazir",   seviye: "Temel" },
         { id: "g9",  ad: "Uçak Yapısı",                                   sure: 18, durum: "hazir",   seviye: "Temel", mulakat: true },
-        { id: "g10", ad: "Uçak Neden Dönüyor?",                           sure: 14, durum: "yakinda", seviye: "Temel" },
-        { id: "g11", ad: "Uçak Nasıl Hızlanıyor / Yavaşlıyor?",           sure: 14, durum: "yakinda", seviye: "Temel" },
-        { id: "g12", ad: "Atmosferi Tanı",                                sure: 16, durum: "yakinda", seviye: "Temel" },
-        { id: "g13", ad: "Mach Sayısı Nedir?",                            sure: 14, durum: "yakinda", seviye: "Temel", mulakat: true },
-        { id: "g14", ad: "Uçakların Sınıflandırılması",                   sure: 16, durum: "yakinda", seviye: "Temel" },
-        { id: "g15", ad: "Bir Uçak Neden Böyle Tasarlanmış?",             sure: 18, durum: "yakinda", seviye: "Orta" },
-        { id: "g16", ad: "Bir Uçağa Mühendis Gözüyle Bakalım",            sure: 18, durum: "yakinda", seviye: "Orta" },
+        { id: "g10", ad: "Uçak Neden Dönüyor?",                           sure: 14, durum: "hazir",   seviye: "Temel", mulakat: true },
+        { id: "g11", ad: "Uçak Nasıl Hızlanıyor / Yavaşlıyor?",           sure: 16, durum: "hazir",   seviye: "Temel", mulakat: true },
+        { id: "g12", ad: "Atmosferi Tanı",                                sure: 16, durum: "hazir",   seviye: "Temel" },
+        { id: "g13", ad: "Mach Sayısı Nedir?",                            sure: 16, durum: "hazir",   seviye: "Temel", mulakat: true },
+        { id: "g14", ad: "Uçakların Sınıflandırılması",                   sure: 16, durum: "hazir",   seviye: "Temel" },
+        { id: "g15", ad: "Bir Uçak Neden Böyle Tasarlanmış?",             sure: 18, durum: "hazir",   seviye: "Orta" },
+        { id: "g16", ad: "Bir Uçağa Mühendis Gözüyle Bakalım",            sure: 18, durum: "hazir",   seviye: "Orta" },
         { id: "g17", ad: "Final: Mühendislik Mülakatı",                   sure: 20, durum: "yakinda", seviye: "Orta",  mulakat: true }
       ]
     },
@@ -1221,6 +1221,660 @@ window.CONTENT = {
       ipuclari: {
         "Uygulama": "Üç gövde tipinin (kafes/monokok/yarı monokok) hangi uçak kategorisinde kullanıldığını eşleştirmeyi tekrar et.",
         "Senaryo": "Toplanabilen iniş takımının performans-maliyet dengesini tekrar et."
+      }
+    },
+"g10": {
+      ad: "Uçak Neden Dönüyor?",
+      ders: "Uçak Mühendisliğine Giriş",
+      seviye: "Temel",
+      sure: 14,
+      mulakat: true,
+      onbilgi: "Uçak Nasıl Havada Duruyor?, Hücum Açısı ve Stall",
+      guncelleme: "14 Eylül 2026",
+      icerikSurum: "1.0",
+      bolumler: [
+        { id: "b1", tip: "ozet", baslik: "Kısaca",
+          metin: "Uçak, kumanda yüzeyleriyle yön değiştiren bir araç değil, kuvvet dengesini bilerek bozan bir araçtır. Dönüş için rudder değil, esas olarak aileron kullanılır: uçak yatınca (roll) taşımanın bir kısmı yatay yöne kayar ve bu yatay bileşen uçağı dairesel bir yola zorlayan merkezcil kuvveti oluşturur. Bunun bedeli, aynı taşımayla artık daha az dikey destek kalmasıdır — bu yüzden dönüşlerde hücum açısı artırılmazsa irtifa kaybedilir." },
+
+        { id: "b2", tip: "metin", baslik: "Neden sadece rudder yetmez?",
+          metin: "Sezgisel olarak 'dönmek için rudder'a basılır' sanılır, ama rudder tek başına sadece burnu yana çevirir (yaw) — uçağın kütlesi eylemsizlik nedeniyle bir süre eski yönünde ilerlemeye devam eder, bu da uçağı yana kaydırır (skid). Gerçek bir koordineli dönüş için uçağın yatay düzlemde net bir merkezcil kuvvete ihtiyacı vardır; bunu en verimli üreten kuvvet zaten var olan taşımanın kendisidir — aileron ile uçağı yatırıp taşımayı bölmek gerekir." },
+
+        { id: "b3", tip: "formul", baslik: "Taşımanın dikey ve yatay bileşenleri",
+          formul: "L_v = L · cosφ    L_h = L · sinφ",
+          semboller: [
+            ["φ", "Yatış açısı (bank angle) — kanatların ufka göre yaptığı açı", "derece"],
+            ["L_v", "Taşımanın dikey bileşeni — ağırlığı dengeler", "N"],
+            ["L_h", "Taşımanın yatay (merkezcil) bileşeni — dönüşü sağlar", "N"]
+          ],
+          metin: "Uçak aileronlarla yatış açısı (φ) aldığında, kanatların ürettiği toplam taşıma kuvveti (L) iki dik bileşene ayrılır. Dikey bileşen ağırlığı dengelemeye devam ederken, yatay bileşen uçağı dairesel bir yörüngeye zorlayan merkezcil kuvveti oluşturur." },
+
+        { id: "b4", tip: "gorsel", baslik: "Yatışta taşımanın bölünmesi", gorsel: "donuskuvvet",
+          metin: "Uçak yatınca toplam taşıma (L) aynı kalsa bile, ağırlığı dengeleyen dikey bileşen (L·cosφ) küçülür; açığa çıkan yatay bileşen (L·sinφ) dönüşü sağlar." },
+
+        { id: "b5", tip: "metin", baslik: "İrtifa kaybı riski ve pilotun tepkisi",
+          metin: "Dönüş sırasında L_v = L·cosφ, φ arttıkça küçülür. φ sabit L ile artarsa L_v < W durumuna düşülür ve uçak irtifa kaybetmeye başlar. Bunu önlemek için pilot hücum açısını (α) hafifçe artırır ('pitch up' komutu) — bu, C_L'yi ve dolayısıyla toplam L'yi büyütür, L_v yeniden W'ye eşitlenir ve uçak irtifasını korur.",
+          kutu: { tip: "bilgi", baslik: "Bedelsiz değil", metin: "Hücum açısını artırmak sürüklemeyi de artırır (Uçak Nasıl Havada Duruyor? dersini hatırla: C_D hiçbir açıda sıfır değildir). Bu yüzden sürdürülen bir dönüşte motorun da biraz daha fazla itki üretmesi gerekir, aksi halde hız düşer." } },
+
+        { id: "b6", tip: "formul", baslik: "Yük faktörü (load factor)",
+          formul: "n = L / W = 1 / cosφ",
+          semboller: [
+            ["n", "Yük faktörü — uçağın hissettiği kuvvetin ağırlığına oranı", "g (yerçekimi katı)"]
+          ],
+          metin: "Yatış açısı arttıkça yapıya binen dinamik yük de artar. Örneğin 60° yatışta n = 1/cos60° = 2 — yani uçak ve içindekiler normal ağırlığının iki katı bir yük hisseder. Yapısal tasarım limitleri bu yük faktörü göz önüne alınarak belirlenir; sivil uçaklarda tipik limit +2,5g / -1g civarındadır." },
+
+        { id: "b7", tip: "tablo", baslik: "Yatış açısına göre yük faktörü",
+          basliklar: ["Yatış açısı (φ)", "n = 1/cosφ"],
+          satirlar: [
+            ["0°", "1,0"],
+            ["30°", "1,15"],
+            ["45°", "1,41"],
+            ["60°", "2,0"],
+            ["75°", "3,86"]
+          ],
+          metin: "Yük faktörü yatış açısıyla doğrusal değil, hızla büyüyen (1/cosφ) bir ilişkiyle artar; 60°'nin üzerinde çok hızlı büyür." },
+
+        { id: "b8", tip: "metin", baslik: "Dönüşte stall hızı neden yükselir?",
+          metin: "Hücum Açısı ve Stall dersindeki V_stall formülünü hatırla: V_stall = √(2Wη/(ρSC_L,max)), burada η yük faktörüdür (n ile aynı büyüklük). Dönüşte n>1 olduğundan stall hızı düz uçuştakinden yüksektir. Bu yüzden düşük hızda yapılan keskin dönüşler (özellikle iniş yaklaşımında, alçak irtifada) 'base-to-final dönüşü stall'ı' gibi ciddi kazalara yol açabilir — uçak sanki güvenli hızdaymış gibi hissettirse de, dönüşün kendisi stall hızını yükseltmiştir." },
+
+        { id: "b9", tip: "ornek", baslik: "Senaryo: 45° yatışla sabit irtifada dönüş",
+          soru: "Bir uçak 45° yatış açısıyla, irtifa kaybetmeden koordineli bir dönüş yapıyor. Ağırlığı W ise, kanatların üretmesi gereken toplam taşıma kuvveti (L) ne kadar olmalıdır?",
+          cozum: "Sabit irtifa şartı L_v = W'dir, yani L·cos45° = W. cos45° ≈ 0,707 olduğundan L = W / 0,707 ≈ 1,41·W. Yani uçak düz uçuştakinin yaklaşık %41 fazlası taşıma üretmelidir — bu da n=1,41 yük faktörüne karşılık gelir (tablodaki değerle tutarlı)." },
+
+        { id: "b10", tip: "liste", baslik: "Yaygın hatalar",
+          maddeler: [
+            "Dönüşün rudder ile yapıldığını sanmak; rudder sadece yardımcıdır (koordinasyon), asıl merkezcil kuvveti üreten aileron ile alınan yatış açısıdır.",
+            "Yatış açısı arttıkça yük faktörünün doğrusal arttığını sanmak; ilişki 1/cosφ olduğundan yüksek açılarda çok hızlı büyür.",
+            "Dönüşte irtifa korumak için sadece motor gücünü artırmanın yeterli olacağını sanmak; asıl gereken hücum açısını artırıp L_v'yi W'ye eşitlemektir, itki artışı sadece bunun getirdiği ekstra sürüklemeyi karşılar.",
+            "Stall hızının dönüşlerde sabit kaldığını sanmak; yük faktörü arttığı için dönüşte stall hızı yükselir."
+          ] },
+
+        { id: "b11", tip: "mulakat", baslik: "Mülakatta nasıl sorulur?",
+          sorular: [
+            ["Bir uçak nasıl döner, rudder mi aileron mu asıl belirleyici?", "Aileron. Uçak aileronlarla yatış açısı aldığında taşımanın bir kısmı yatay yöne kayar ve bu bileşen merkezcil kuvveti oluşturarak dönüşü sağlar. Rudder sadece dönüşü koordine eder (yaw'ı roll ile uyumlu tutar)."],
+            ["Dönüşte neden irtifa kaybetme riski vardır?", "Çünkü taşımanın ağırlığı dengeleyen dikey bileşeni (L·cosφ) yatış açısı arttıkça küçülür. Pilot bunu telafi etmek için hücum açısını artırarak toplam taşımayı büyütmelidir."],
+            ["Yük faktörü (load factor) nedir ve neden önemlidir?", "n=L/W=1/cosφ, uçağın hissettiği kuvvetin ağırlığına oranıdır. Yapısal tasarım limitlerini ve dönüşteki stall hızını doğrudan etkiler; yüksek yatış açılarında hızla büyür."]
+          ] },
+
+        { id: "b12", tip: "kaynakca", baslik: "Kaynakça",
+          maddeler: [
+            "FAA. (2023). Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25C), Bölüm 5: Aerodynamics of Flight — Turns.",
+            "Anderson, J. D., Jr. (2016). Introduction to flight (8. baskı). McGraw-Hill.",
+            "Hurt, H. H., Jr. (1965). Aerodynamics for naval aviators. U.S. Navy, NAVAIR 00-80T-80."
+          ] },
+
+        { id: "b13", tip: "video", baslik: "Videolar",
+          videolar: [
+            { ad: "Bank Angle–Load Factor Demo", kanal: "Uçuş eğitimi videosu", dil: "İngilizce",
+              not: "Yatış açısının yük faktörünü ve stall hızını nasıl etkilediğini basit bir gösterimle anlatıyor.",
+              url: "https://www.youtube.com/watch?v=_yGgvRKW5Ks" }
+          ] }
+      ],
+
+      sorular: [
+        { id: "g10s1", etiket: "Kavram", puan: 1, soru: "Bir uçağın dönmesini asıl olarak hangi kumanda yüzeyi/mekanizması sağlar?",
+          secenekler: ["Rudder tek başına", "Aileron ile alınan yatış açısı", "Flap açısı", "Motor itkisinin asimetrik olması"], dogru: 1,
+          aciklama: "Aileronlarla alınan yatış açısı, taşımanın bir kısmını yatay yöne çevirerek merkezcil kuvveti üretir; rudder sadece dönüşü koordine eder." },
+        { id: "g10s2", etiket: "Formül", puan: 2, soru: "L_h = L·sinφ formülünde L_h neyi ifade eder?",
+          secenekler: ["Taşımanın dikey bileşenini", "Taşımanın yatay (merkezcil) bileşenini", "Toplam sürüklemeyi", "Yük faktörünü"], dogru: 1,
+          aciklama: "L_h, taşımanın yatay bileşenidir ve uçağı dairesel yörüngeye zorlayan merkezcil kuvveti oluşturur." },
+        { id: "g10s3", etiket: "Analiz", puan: 2, soru: "Yatış açısı arttıkça, sabit toplam taşımada dikey bileşene (L_v) ne olur?",
+          secenekler: ["Artar", "Değişmez", "Azalır", "Sıfırlanır"], dogru: 2,
+          aciklama: "L_v = L·cosφ olduğundan φ arttıkça cosφ küçülür, dolayısıyla L_v azalır — bu da irtifa kaybı riskini doğurur." },
+        { id: "g10s4", etiket: "Formül", puan: 2, soru: "45° yatış açısında yük faktörü (n) yaklaşık kaçtır?",
+          secenekler: ["1,0", "1,15", "1,41", "2,0"], dogru: 2,
+          aciklama: "n = 1/cosφ = 1/cos45° = 1/0,707 ≈ 1,41." },
+        { id: "g10s5", etiket: "Analiz", puan: 2, soru: "Pilot dönüş sırasında irtifayı korumak için ne yapar?",
+          secenekler: ["Rudder'ı daha çok kullanır", "Hücum açısını artırarak toplam taşımayı büyütür", "Flapları kapatır", "Hiçbir şey yapmasına gerek yoktur"], dogru: 1,
+          aciklama: "Hücum açısını artırmak C_L'yi ve dolayısıyla toplam taşımayı büyütür; bu da L_v'yi yeniden W'ye eşitleyip irtifa kaybını önler." },
+        { id: "g10s6", etiket: "Uygulama", puan: 2, soru: "Dönüşte stall hızının düz uçuştakinden yüksek olmasının sebebi nedir?",
+          secenekler: ["Dönüşte hava yoğunluğu değişir", "Yük faktörü (η/n) arttığı için V_stall formülünde pay büyür", "Motor gücü dönüşte otomatik azalır", "Kanat alanı dönüşte küçülür"], dogru: 1,
+          aciklama: "V_stall=√(2Wη/(ρSC_L,max)) formülünde η (yük faktörü) dönüşte 1'den büyük olur, bu da stall hızını yükseltir." },
+        { id: "g10s7", etiket: "Kavram", puan: 1, soru: "Sadece rudder kullanılarak yapılan bir dönüşte ne olur?",
+          secenekler: ["Mükemmel koordineli bir dönüş olur", "Uçak yana kayar (skid), gerçek bir merkezcil kuvvet yeterince oluşmaz", "Uçak anında stall olur", "Yük faktörü sıfırlanır"], dogru: 1,
+          aciklama: "Rudder tek başına burnu çevirir ama uçağın kütlesi eylemsizlikle eski yönünde ilerlemeye devam eder; bu da yana kaymaya (skid) yol açar. Asıl merkezcil kuvvet roll ile üretilir." }
+      ],
+      ipuclari: {
+        "Formül": "n=1/cosφ ve L_v=L·cosφ / L_h=L·sinφ formüllerini birlikte tekrar et.",
+        "Analiz": "Yatış açısı arttıkça L_v'nin küçüldüğünü, bunu telafi etmek için hücum açısının artırıldığını adım adım düşün.",
+        "Uygulama": "V_stall formülündeki η'nin dönüşlerde 1'den büyük olduğunu ve bunun stall hızını nasıl etkilediğini tekrar et."
+      }
+    },
+"g11": {
+      ad: "Uçak Nasıl Hızlanıyor / Yavaşlıyor?",
+      ders: "Uçak Mühendisliğine Giriş",
+      seviye: "Temel",
+      sure: 16,
+      mulakat: true,
+      onbilgi: "Uçak Nedir? (T=D dengesi), Kontrol Yüzeyleri",
+      guncelleme: "14 Eylül 2026",
+      icerikSurum: "1.0",
+      bolumler: [
+        { id: "b1", tip: "ozet", baslik: "Kısaca",
+          metin: "Bir uçağın hızlanması veya yavaşlaması, itki–sürükleme dengesinin bilerek bozulmasıyla gerçekleşir. Motor itkiyi üretir; sürükleme doğal olarak havadan gelir. Frenleme ise yerde ve havada farklı mekanizmalarla sağlanır: havada spoiler ve idle/reverse thrust, yerde tekerlekler üzerindeki disk frenler ve ters itki." },
+
+        { id: "b2", tip: "metin", baslik: "İtki–sürükleme dengesi hatırlatma",
+          metin: "Uçak Nedir? dersinden: T=D iken uçak sabit hızda gider. T>D ise hızlanır, T<D ise yavaşlar. Bu basit denge uçağın hız kontrolünün temelidir — pilot gaz kolunu (throttle) ileri ittikçe motor daha fazla itki üretir, geri çektikçe azaltır." },
+
+        { id: "b3", tip: "metin", baslik: "Motor türleri ve itki üretim mekanizmaları",
+          metin: "Pistonlu (boxer) motor: silindirler içinde hava-yakıt karışımı patlatılır, krank mili döner, pervane ileri yönlü çekme kuvveti üretir. Eğitim uçaklarında yaygındır. Dört zamanlı çevrim: emme → sıkıştırma → yanma → egzoz.\nTurbojet: havayı kompresörle sıkıştırır, yanma odasında yakıtla yakar, egzoz gazlarını yüksek hızda arkadan püskürtür. Verim düşüktür ama yüksek hız sağlar.\nTurbofan: turbojetin önüne büyük bir fan eklenerek geliştirilmiştir. Havanın büyük bölümü (bypass havası) çekirdekten geçmeden fandan hızlanır; toplam itkinin %80'den fazlasını bu fan havası üretir. Modern yolcu uçaklarında standart — sessiz ve yakıt verimli.\nTurboprop: türbin enerjisini dişli kutusu üzerinden pervaneye aktarır. Düşük/orta hızda çok verimli, kısa pist mesafesiyle çalışabilir." },
+
+        { id: "b4", tip: "tablo", baslik: "Motor tipleri karşılaştırması",
+          basliklar: ["Tip", "İtki mekanizması", "Hız aralığı", "Verim"],
+          satirlar: [
+            ["Pistonlu/pervane", "Pervane havayı çeker", "Düşük (< Mach 0,3)", "Düşük hızda yüksek"],
+            ["Turboprop", "Türbin → dişli → pervane", "Orta (Mach 0,3-0,6)", "Kısa mesafe / kısa pistte en verimli"],
+            ["Turbofan", "Fan + çekirdek jet", "Sesaltı seyir (Mach 0,7-0,85)", "Yolcu uçaklarında standart, çok verimli"],
+            ["Turbojet", "Sıcak egzoz gazı hızı", "Yüksek / süpersonik", "Düşük, gürültülü; askeri/eski nesil"]
+          ] },
+
+        { id: "b5", tip: "metin", baslik: "Havada yavaşlama: spoiler ve idle thrust",
+          metin: "Motorun gaz kolu rölantiye (idle) çekildiğinde itki minimuma iner; sürükleme baskın kalır ve uçak yavaşlar. Daha hızlı yavaşlamak için kanat üstündeki spoilerlar açılır: taşımayı düşürüp sürüklemeyi artırarak uçağı hem yavaşlatır hem alçaltır.\nBazı uçaklarda (özellikle iniş yaklaşımalarında) hız frenli iniş konfigürasyonunda iniş takımı da kasıtlı olarak açık tutularak ekstra sürükleme yaratılır (gear-down speed brake)." },
+
+        { id: "b6", tip: "metin", baslik: "Yerde frenleme: disk fren + ters itki + spoiler",
+          metin: "Piste teker koyduktan sonra üç mekanizma birlikte çalışır:\n1. Ground spoiler: tam açılarak kanat taşımasını sıfırlar, uçağın ağırlığını tekerleklere bindirir → fren verimliliği artar.\n2. Ters itki (thrust reverser): jet motorlarında egzoz gazının yönü mekanik kapaklar (blocker door) veya kova (bucket) sistemiyle öne çevrilerek uçağı yavaşlatır. Pistonlu uçaklarda pervane hatve açısı negatife alınarak aynı etki sağlanır.\n3. Tekerlek disk frenleri: rudder pedallarının üst kısmına basılarak devreye girer. Her iki ana dikmede bağımsız çalışır; bu yerde yönlendirme kolaylığı da sağlar." },
+
+        { id: "b7", tip: "ornek", baslik: "Senaryo: Kalkış koşusu analizi",
+          soru: "Bir uçak kalkış koşusundayken motor tam güçte çalışıyor. Uçak hızlanırken sürükleme de artıyor. Uçağın yerden kalkması için hangi şart sağlanmalıdır?",
+          cozum: "Uçağın kalkabilmesi için kanatların yeterli taşıma üretmesi gerekir: L ≥ W. Taşıma hızın karesiyle orantılı olduğundan (L = C_L·½ρV²S), yeterli hıza ulaşılana kadar motor itkisi sürükleme + yer sürtünmesini karşılayarak uçağı hızlandırmaya devam eder. Kalkış hızına (V_LOF) ulaşıldığında pilot burnu kaldırır ve uçak yerden kalkar." },
+
+        { id: "b8", tip: "liste", baslik: "Yaygın hatalar",
+          maddeler: [
+            "Ters itkinin uçağı geriye hareket ettirdiğini sanmak; ters itki sadece yavaşlatır, uçağı geriye sürmez.",
+            "Frenlemenin sadece tekerleklerle yapıldığını sanmak; spoiler + ters itki + tekerlek freni birlikte çalışır.",
+            "Turbofan ile turbojet'i aynı sanmak; turbofan'da itkinin büyük kısmını bypass fan havası üretir, bu da onu çok daha sessiz ve verimli yapar.",
+            "Kalkışta sadece motor gücünün yeterli olduğunu sanmak; pilotun doğru hücum açısını (rotation) zamanında vermesi de gerekir."
+          ] },
+
+        { id: "b9", tip: "mulakat", baslik: "Mülakatta nasıl sorulur?",
+          sorular: [
+            ["Turbofan ile turbojet arasındaki temel fark nedir?", "Turbofan'da önde büyük bir fan vardır; havanın büyük kısmı çekirdekten geçmeden fandan hızlanır (bypass). Bu, itkinin %80'den fazlasını düşük hızlı ama yüksek kütleli hava akışıyla üretir — daha verimli ve sessiz."],
+            ["Uçak yerde nasıl durur?", "Üç mekanizma birlikte çalışır: ground spoiler taşımayı sıfırlayıp ağırlığı tekerleklere bindirir, ters itki egzoz/pervane yönünü çevirerek yavaşlatır, disk frenler kinetik enerjiyi ısıya dönüştürür."],
+            ["Bypass oranı nedir ve neden önemlidir?", "Fan'dan geçen hava miktarının çekirdekten geçen havaya oranıdır. Modern turbofanlarda 4:1 ile 12:1 arasında değişir; yüksek bypass oranı daha iyi yakıt verimi ve daha düşük gürültü demektir."]
+          ] },
+
+        { id: "b10", tip: "kaynakca", baslik: "Kaynakça",
+          maddeler: [
+            "IVAO-TR Eğitim Departmanı. (2014). Motor ve Sistemleri.",
+            "ucaktek.com. Uçak Motorları (eğitim dokümanı).",
+            "NASA Glenn Research Center. Turbofan Thrust. www.grc.nasa.gov",
+            "FAA. (2023). Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25C), Bölüm 7: Aircraft Systems."
+          ] },
+
+        { id: "b11", tip: "video", baslik: "Videolar",
+          videolar: [
+            { ad: "How Jet Engine Produces Thrust", kanal: "Jet Engine Cut-Section Demo", dil: "İngilizce",
+              not: "Turbofan motorunun kesit modeli üzerinde fan, kompresör, yanma odası ve türbin aşamalarını gösteren pratik anlatım.",
+              url: "https://www.youtube.com/watch?v=Pt24Pptvt_M" }
+          ] }
+      ],
+
+      sorular: [
+        { id: "g11s1", etiket: "Kavram", puan: 1, soru: "T>D olduğunda uçak ne yapar?",
+          secenekler: ["Yavaşlar", "Hızlanır", "İrtifa kaybeder", "Stall'a girer"], dogru: 1,
+          aciklama: "İtki sürüklemeden büyük olduğunda net kuvvet ileri yöndedir ve uçak hızlanır." },
+        { id: "g11s2", etiket: "Motor", puan: 1, soru: "Modern yolcu uçaklarında hangi motor tipi standarttır?",
+          secenekler: ["Pistonlu", "Turbojet", "Turbofan", "Ramjet"], dogru: 2,
+          aciklama: "Turbofan, yüksek verim ve düşük gürültü avantajıyla modern sivil uçakların standart motor tipidir." },
+        { id: "g11s3", etiket: "Motor", puan: 2, soru: "Turbofan motorda toplam itkinin büyük bölümünü ne üretir?",
+          secenekler: ["Yanma odası çıkışındaki sıcak egzoz", "Bypass fan havası", "Kompresör basıncı", "Türbin sıcaklığı"], dogru: 1,
+          aciklama: "Turbofan'da itkinin %80'den fazlasını bypass fan havası (düşük hızlı ama yüksek kütleli akış) üretir." },
+        { id: "g11s4", etiket: "Frenleme", puan: 2, soru: "İniş sonrası ground spoiler'ın temel katkısı nedir?",
+          secenekler: ["Motor gücünü artırmak", "Taşımayı sıfırlayıp ağırlığı tekerleklere bindirerek fren verimini artırmak", "Uçağı yukarı kaldırmak", "Yakıt tasarrufu sağlamak"], dogru: 1,
+          aciklama: "Ground spoiler kanat taşımasını aniden düşürerek uçağın ağırlığını tekerleklere bindirir; bu sayede disk frenler çok daha etkili çalışır." },
+        { id: "g11s5", etiket: "Kavram", puan: 1, soru: "Ters itki (thrust reverser) uçağı geriye hareket ettirir mi?",
+          secenekler: ["Evet, uçak geriye gider", "Hayır, sadece yavaşlatır", "Sadece havada çalışır", "Sadece pistonlu motorlarda vardır"], dogru: 1,
+          aciklama: "Ters itki, egzoz/pervane yönünü çevirerek uçağın ileri hareketini yavaşlatır; uçağı geriye sürmez." },
+        { id: "g11s6", etiket: "Motor", puan: 2, soru: "Bypass oranı nedir?",
+          secenekler: ["Motor ağırlığının kanat ağırlığına oranı", "Fan'dan geçen hava miktarının çekirdekten geçen havaya oranı", "Yakıt tüketiminin itki kuvvetine oranı", "Kompresör devir sayısının türbin devir sayısına oranı"], dogru: 1,
+          aciklama: "Bypass oranı, fan'dan geçip çekirdeğe girmeyen havanın çekirdekten geçen havaya oranıdır; modern turbofanlarda 4:1 ile 12:1 arasında değişir." },
+        { id: "g11s7", etiket: "Uygulama", puan: 2, soru: "Pistonlu motorun dört zamanlı çevrimi sırasıyla hangi adımlardan oluşur?",
+          secenekler: ["Emme → Sıkıştırma → Yanma → Egzoz", "Sıkıştırma → Emme → Egzoz → Yanma", "Yanma → Emme → Egzoz → Sıkıştırma", "Egzoz → Sıkıştırma → Emme → Yanma"], dogru: 0,
+          aciklama: "Dört zamanlı çevrim sırasıyla: emme (hava-yakıt silindirlere çekilir), sıkıştırma, yanma (buji ateşler), egzoz (yanmış gaz atılır)." }
+      ],
+      ipuclari: {
+        "Motor": "Turbojet, turbofan, turboprop arasındaki bypass/verim/hız farklarını ve her birinin hangi uçak tipinde kullanıldığını tekrar et.",
+        "Frenleme": "İniş sonrası üç frenleme mekanizmasının (spoiler+ters itki+disk fren) birlikte nasıl çalıştığını sırayla tekrar et."
+      }
+    },
+"g12": {
+      ad: "Atmosferi Tanı",
+      ders: "Uçak Mühendisliğine Giriş",
+      seviye: "Temel",
+      sure: 16,
+      onbilgi: "Uçak Nasıl Havada Duruyor? (ρ'nin taşımaya etkisi)",
+      guncelleme: "14 Eylül 2026",
+      icerikSurum: "1.0",
+      bolumler: [
+        { id: "b1", tip: "ozet", baslik: "Kısaca",
+          metin: "Uçak, atmosferin içinde uçar ve performansının tamamı havanın sıcaklık, basınç ve yoğunluğuna bağlıdır. Uçak tasarımı ve performans hesapları tek bir ortak referansa dayandırılır: ICAO Standart Atmosfer (ISA). ISA, deniz seviyesinde 15°C / 1013,25 hPa / 1,225 kg/m³ koşullarını tanımlar ve irtifayla nasıl değiştiklerini modelleyen idealize bir profildir." },
+
+        { id: "b2", tip: "tablo", baslik: "ISA deniz seviyesi referans değerleri",
+          basliklar: ["Büyüklük", "Değer"],
+          satirlar: [
+            ["Sıcaklık (T₀)", "15 °C (288,15 K)"],
+            ["Basınç (P₀)", "1013,25 hPa (29,92 inHg)"],
+            ["Yoğunluk (ρ₀)", "1,225 kg/m³"],
+            ["Ses hızı (a₀)", "340,3 m/s (661,5 knot)"],
+            ["Yer çekimi ivmesi (g)", "9,80665 m/s²"]
+          ] },
+
+        { id: "b3", tip: "metin", baslik: "Troposfer: uçağın yaşam alanı",
+          metin: "Troposfer, yeryüzünden yaklaşık 11 km'ye (36.089 ft) kadar uzanır. Bu katmanda sıcaklık her 1000 ft'te yaklaşık 2°C (veya her 1000 m'de 6,5°C) düşer — buna sıcaklık azalma oranı (lapse rate) denir. Hafif uçaklar troposferin alt yarısında, jet yolcu uçakları ise üst sınırına yakın veya tropopozun hemen üstünde (alt stratosfer) uçar.\nTropopoz: troposfer ile stratosfer arasındaki sınırdır. ISA'da 11 km'de sıcaklık -56,5°C'ye düşer ve stratosfer boyunca yaklaşık 20 km'ye kadar sabit kalır (izotermal katman)." },
+
+        { id: "b4", tip: "metin", baslik: "Basınç ve yoğunluk: irtifayla düşüş",
+          metin: "İrtifa arttıkça hem basınç hem yoğunluk azalır. Basınç deniz seviyesinden 18.000 ft'e çıkıldığında yaklaşık yarıya iner.\nBu düşüş uçuşu doğrudan etkiler: kanat üzerinden geçen hava daha az yoğun olduğundan aynı taşımayı üretmek için uçağın daha hızlı gitmesi gerekir (L=C_L·½ρV²S denklemindeki ρ azalır). Motor performansı da düşer çünkü emdiği havanın kütlesi azalır — yani hem taşıma hem itki irtifadan etkilenir." },
+
+        { id: "b5", tip: "metin", baslik: "ISA sapması ve yoğunluk irtifası",
+          metin: "Gerçek atmosfer ISA'dan sapar. Gerçek sıcaklığın ISA değerinden farkına 'ISA sapması' denir (örn. ISA+10 = ISA'dan 10°C sıcak).\nYoğunluk irtifası (density altitude): basınç irtifası + sıcaklık sapmasının birleşik etkisidir. Sıcak bir günde veya yüksek bir meydanda yoğunluk irtifası gerçek irtifanın çok üzerine çıkar — motor daha az itki üretir, kanat daha az taşıma üretir, kalkış mesafesi uzar. Bu kavram 'performans' derslerinin temelidir." },
+
+        { id: "b6", tip: "ornek", baslik: "Örnek: ISA sıcaklık hesabı",
+          soru: "5000 ft irtifada ISA sıcaklığı kaçtır?",
+          cozum: "ISA deniz seviyesi sıcaklığı 15°C'dir. Her 1000 ft'te 2°C azalır: 5000 ft × 2°C/1000 ft = 10°C azalma. ISA sıcaklığı = 15 - 10 = 5°C." },
+
+        { id: "b7", tip: "liste", baslik: "Yaygın hatalar",
+          maddeler: [
+            "ISA'nın gerçek atmosferi birebir yansıttığını sanmak; ISA idealize bir modeldir, gerçek koşullar her zaman sapar.",
+            "Yüksek irtifada 'hava az olduğu için uçak daha kolay uçar' sanmak; aslında hem taşıma hem itki düşer, motor ve kanat daha çok zorlanır.",
+            "Sıcak günlerde performansın değişmeyeceğini sanmak; sıcaklık yoğunluğu düşürür, yoğunluk irtifasını yükseltir ve kalkış mesafesi uzar.",
+            "Tropopozun her yerde aynı irtifada olduğunu sanmak; ISA'da 11 km'dir ama gerçekte ekvatordan kutuplara değişir (7-17 km)."
+          ] },
+
+        { id: "b8", tip: "mulakat", baslik: "Mülakatta nasıl sorulur?",
+          sorular: [
+            ["ISA nedir ve neden kullanılır?", "ICAO Standart Atmosfer, sıcaklık/basınç/yoğunluğun irtifayla değişimini tanımlayan uluslararası referans modelidir. Tüm uçak performans hesapları, altimetre kalibrasyonu ve motor test verileri bu ortak referansa göre yapılır."],
+            ["Yoğunluk irtifası neden önemlidir?", "Sıcak veya yüksek meydanlarda havanın gerçek yoğunluğu ISA'dan düşük kalır; motor daha az itki, kanat daha az taşıma üretir. Kalkış mesafesi uzar, tırmanma oranı düşer. Bu kavramı bilmeyen bir pilot sıcak günde ciddi bir güvenlik riski oluşturur."],
+            ["ISA'da troposferdeki sıcaklık azalma oranı nedir?", "Her 1000 ft'te yaklaşık 2°C (veya 6,5°C/km). 36.089 ft'te (11 km) sıcaklık -56,5°C'ye düşer ve stratosfer boyunca sabit kalır."]
+          ] },
+
+        { id: "b9", tip: "kaynakca", baslik: "Kaynakça",
+          maddeler: [
+            "ICAO. (1993). Manual of the ICAO Standard Atmosphere (Doc 7488/3).",
+            "FAA. (2023). Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25C), Bölüm 4: Principles of Flight.",
+            "Anderson, J. D., Jr. (2016). Introduction to flight (8. baskı). McGraw-Hill, Bölüm 3."
+          ] },
+
+        { id: "b10", tip: "video", baslik: "Videolar",
+          videolar: [
+            { ad: "Understanding ISA", kanal: "Aviation Ground School", dil: "İngilizce",
+              not: "ISA modelini, lapse rate'i ve yoğunluk irtifasını açık bir şekilde anlatıyor.",
+              url: "https://www.youtube.com/watch?v=ex_N_gS6NZQ" }
+          ] }
+      ],
+
+      sorular: [
+        { id: "g12s1", etiket: "Sabit", puan: 1, soru: "ISA'da deniz seviyesi sıcaklığı kaçtır?",
+          secenekler: ["0 °C", "15 °C", "25 °C", "-56,5 °C"], dogru: 1,
+          aciklama: "ISA deniz seviyesi referans sıcaklığı 15°C'dir (288,15 K)." },
+        { id: "g12s2", etiket: "Hesap", puan: 2, soru: "ISA'da 10.000 ft irtifadaki sıcaklık kaçtır?",
+          secenekler: ["-5 °C", "5 °C", "15 °C", "-15 °C"], dogru: 0,
+          aciklama: "15 - (10 × 2) = 15 - 20 = -5°C." },
+        { id: "g12s3", etiket: "Kavram", puan: 1, soru: "Troposferde sıcaklık her 1000 ft'te yaklaşık kaç derece azalır?",
+          secenekler: ["1 °C", "2 °C", "5 °C", "10 °C"], dogru: 1,
+          aciklama: "ISA standart lapse rate'i yaklaşık 2°C / 1000 ft'tir." },
+        { id: "g12s4", etiket: "Analiz", puan: 2, soru: "Sıcak bir günde kalkış mesafesinin uzamasının sebebi nedir?",
+          secenekler: ["Rüzgâr hızlanır", "Hava yoğunluğu düşer, motor ve kanat performansı azalır", "Pist genleşir", "Yakıt buharlaşır"], dogru: 1,
+          aciklama: "Sıcaklık yoğunluğu düşürür; düşük yoğunluk hem motordaki itki hem kanattaki taşıma üretimini azaltır — dolayısıyla kalkış hızına ulaşmak daha uzun sürer." },
+        { id: "g12s5", etiket: "Sabit", puan: 1, soru: "ISA'da deniz seviyesinde standart basınç değeri kaçtır?",
+          secenekler: ["1013,25 hPa", "760 hPa", "1225 hPa", "29,92 Pa"], dogru: 0,
+          aciklama: "ISA standart deniz seviyesi basıncı 1013,25 hPa'dır (29,92 inHg)." },
+        { id: "g12s6", etiket: "Kavram", puan: 1, soru: "Tropopoz hangi irtifada başlar (ISA)?",
+          secenekler: ["5 km", "11 km (≈36.089 ft)", "20 km", "50 km"], dogru: 1,
+          aciklama: "ISA'da tropopoz 11 km'de (36.089 ft) başlar; bu noktada sıcaklık -56,5°C'ye düşer ve stratosfer boyunca sabit kalır." }
+      ],
+      ipuclari: {
+        "Hesap": "ISA sıcaklığını hesaplamak için: T = 15 - (2 × irtifa_ft/1000) formülünü kullan.",
+        "Analiz": "Sıcaklık→yoğunluk→taşıma/itki zincirini adım adım düşün."
+      }
+    },
+"g13": {
+      ad: "Mach Sayısı Nedir?",
+      ders: "Uçak Mühendisliğine Giriş",
+      seviye: "Temel",
+      sure: 16,
+      mulakat: true,
+      onbilgi: "Atmosferi Tanı (ses hızı, sıcaklık–irtifa ilişkisi)",
+      guncelleme: "14 Eylül 2026",
+      icerikSurum: "1.0",
+      bolumler: [
+        { id: "b1", tip: "ozet", baslik: "Kısaca",
+          metin: "Mach sayısı, bir cismin hızının o noktadaki ses hızına oranıdır (Ma = V/a). Ses hızı sıcaklığa bağlıdır; yüksek irtifada sıcaklık düştüğünden ses hızı da düşer. Uçak tasarımında Mach sayısı kritiktir: sıkıştırılabilirlik etkileri, şok dalgaları ve kanat formu seçimi doğrudan Mach rejimine bağlıdır." },
+
+        { id: "b2", tip: "formul", baslik: "Mach sayısı ve ses hızı",
+          formul: "Ma = V / a       a = √(γRT)",
+          semboller: [
+            ["V", "Cismin hızı", "m/s"],
+            ["a", "Bulunulan noktadaki yerel ses hızı", "m/s"],
+            ["γ", "Özgül ısılar oranı (hava için ≈1,4)", "-"],
+            ["R", "Havanın gaz sabiti (287 J/(kg·K))", "J/(kg·K)"],
+            ["T", "Havanın mutlak sıcaklığı", "K"]
+          ],
+          metin: "Deniz seviyesinde (ISA, 288,15 K) ses hızı ≈ 340 m/s ≈ 661 knot'tur. 11 km'de (216,65 K) ise ≈ 295 m/s'ye düşer. Yani aynı gerçek hızla uçan bir uçağın Mach sayısı irtifa arttıkça büyür." },
+
+        { id: "b3", tip: "tablo", baslik: "Uçuş hız rejimleri",
+          basliklar: ["Rejim", "Mach aralığı", "Özellik"],
+          satirlar: [
+            ["Sesaltı (Subsonic)", "< 0,8", "Sıkıştırılabilirlik ihmal edilebilir, klasik aerodinamik kuralları geçerli"],
+            ["Transonik", "0,8 – 1,2", "Uçak yüzeyi etrafında hem sesaltı hem sesüstü akış bölgeleri birlikte bulunur; şok dalgaları oluşmaya başlar"],
+            ["Sesüstü (Supersonic)", "1,2 – 5,0", "Tüm akış sesüstüdür; şok dalgaları belirgin, delta/ok kanatlı tasarımlar gerekir"],
+            ["Hipersonik", "> 5,0", "Aşırı sıcaklıklar; özel malzeme ve ısıl koruma gerektirir (uzay araçları)"]
+          ] },
+
+        { id: "b4", tip: "metin", baslik: "Transonik bölge ve 'ses duvarı' efsanesi",
+          metin: "Mach 0,8-1,2 aralığında kanat üzerindeki akış bazı bölgelerde sesüstüne geçer ve şok dalgaları oluşur. Bu şok dalgaları sürüklemeyi ani ve büyük bir şekilde artırır — 1940'larda pilotlar bunu 'aşılamaz bir duvar' sandı. Gerçekte ses duvarı fiziksel bir engel değil, sadece sürüklemenin (dalga sürüklemesi) çok arttığı bir geçiş bölgesidir. Geriye ok açılı kanatlar ve süperkritik profiller bu geçişi geciktirmek/yönetmek için geliştirilmiştir." },
+
+        { id: "b5", tip: "metin", baslik: "Mach sayısının tasarıma etkisi",
+          metin: "Düşük sesaltı (Ma<0,3): sıkıştırılabilirlik göz ardı edilir, düz kanat yeterli. Yüksek sesaltı/transonik (0,7-0,85): geriye ok açılı kanat ve süperkritik profil, şok dalgasını geciktirmek için. Sesüstü (>1,2): delta veya çift delta kanat, keskin hücum kenarı, şok dalgalarını yönetmek için. Hipersonik (>5): konvansiyonel jet motorları çalışmaz; scramjet veya roket itkisi gerekir, termal koruma kritik." },
+
+        { id: "b6", tip: "ornek", baslik: "Örnek: Ses hızı hesabı",
+          soru: "11 km irtifada (ISA sıcaklığı -56,5°C = 216,65 K) ses hızı kaçtır?",
+          cozum: "a = √(γRT) = √(1,4 × 287 × 216,65) = √(87.031) ≈ 295 m/s. Deniz seviyesindeki 340 m/s'den belirgin şekilde düşük — yani aynı hızda uçan bir uçağın Mach sayısı bu irtifada daha yüksektir." },
+
+        { id: "b7", tip: "liste", baslik: "Yaygın hatalar",
+          maddeler: [
+            "Ses hızının sabit olduğunu sanmak; ses hızı sıcaklığa (ve dolayısıyla irtifaya) bağlıdır.",
+            "Mach 1'i geçmenin imkânsız olduğunu sanmak; 'ses duvarı' fiziksel bir engel değil, sürüklemenin aniden arttığı bir geçiş bölgesidir.",
+            "Mach sayısının sadece savaş uçaklarını ilgilendirdiğini sanmak; sivil jetler Mach 0,78-0,85'te uçar, tasarım kritik Mach sayısına göre optimize edilir.",
+            "Transonik bölgede tüm akışın sesüstü olduğunu sanmak; bazı bölgeler sesüstü, bazıları sesaltıdır — bu karışıklık şok dalgalarını tetikler."
+          ] },
+
+        { id: "b8", tip: "mulakat", baslik: "Mülakatta nasıl sorulur?",
+          sorular: [
+            ["Mach sayısı nedir?", "Cismin hızının yerel ses hızına oranıdır: Ma=V/a. Ses hızı sıcaklığa bağlıdır; irtifa arttıkça ses hızı düşer, dolayısıyla aynı gerçek hızda Mach sayısı yükselir."],
+            ["Neden yolcu uçakları geriye ok açılı kanat kullanır?", "Transonik seyir hızlarında (Mach 0,78-0,85) kanat üzerindeki akışın yerel olarak sesüstüne geçmesini ve şok dalgası oluşumunu geciktirmek için; bu dalga sürüklemesini azaltır."],
+            ["Ses duvarı gerçek bir fiziksel engel midir?", "Hayır. Mach 1 civarında dalga sürüklemesi (wave drag) ani şekilde artar — 1940'larda bu aşılamaz sanıldı. Doğru aerodinamik tasarımla (ok kanat, area rule, süperkritik profil) bu bölge güvenle geçilir."]
+          ] },
+
+        { id: "b9", tip: "kaynakca", baslik: "Kaynakça",
+          maddeler: [
+            "NASA Glenn Research Center. Mach Number. www.grc.nasa.gov",
+            "Anderson, J. D., Jr. (2016). Introduction to flight (8. baskı). McGraw-Hill, Bölüm 5.",
+            "FAA. (2023). Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25C), Bölüm 5."
+          ] },
+
+        { id: "b10", tip: "video", baslik: "Videolar",
+          videolar: [
+            { ad: "Mach Number – Aerospace Engineering Lecture", kanal: "Aerospace Lecture Series", dil: "İngilizce",
+              not: "Mach sayısını, ses hızı formülünü ve uçuş rejimlerini mühendislik düzeyinde anlatıyor.",
+              url: "https://www.youtube.com/watch?v=ldKCnhpHT_A" }
+          ] }
+      ],
+
+      sorular: [
+        { id: "g13s1", etiket: "Formül", puan: 1, soru: "Mach sayısı nasıl hesaplanır?",
+          secenekler: ["Ma = a/V", "Ma = V/a", "Ma = V×a", "Ma = V-a"], dogru: 1,
+          aciklama: "Mach sayısı, cismin hızının yerel ses hızına oranıdır: Ma = V/a." },
+        { id: "g13s2", etiket: "Rejim", puan: 1, soru: "Mach 0,85'te uçan bir yolcu uçağı hangi rejimde uçmaktadır?",
+          secenekler: ["Sesaltı (< 0,8)", "Transonik (0,8-1,2)", "Sesüstü (1,2-5,0)", "Hipersonik (> 5,0)"], dogru: 1,
+          aciklama: "0,8 ile 1,2 arasındaki Mach sayıları transonik rejime girer." },
+        { id: "g13s3", etiket: "Kavram", puan: 2, soru: "İrtifa arttıkça (sıcaklık düştükçe) ses hızına ne olur?",
+          secenekler: ["Artar", "Değişmez", "Azalır", "Sıfırlanır"], dogru: 2,
+          aciklama: "Ses hızı a=√(γRT) formülüyle sıcaklığa bağlıdır; sıcaklık düştükçe ses hızı da düşer." },
+        { id: "g13s4", etiket: "Hesap", puan: 2, soru: "Deniz seviyesinde (ISA) ses hızı yaklaşık kaçtır?",
+          secenekler: ["≈ 295 m/s", "≈ 340 m/s", "≈ 500 m/s", "≈ 1225 m/s"], dogru: 1,
+          aciklama: "ISA deniz seviyesinde (288,15 K) ses hızı ≈ 340 m/s'dir." },
+        { id: "g13s5", etiket: "Tasarım", puan: 2, soru: "Geriye ok açılı kanatların temel amacı nedir?",
+          secenekler: ["Daha fazla yolcu taşımak", "Şok dalgası oluşumunu geciktirip dalga sürüklemesini azaltmak", "İniş takımına yer açmak", "Görünümü güzelleştirmek"], dogru: 1,
+          aciklama: "Ok açılı kanatlar, transonik hızlarda kanat üzerindeki akışın sesüstüne geçmesini geciktirir; bu dalga sürüklemesini azaltır." },
+        { id: "g13s6", etiket: "Kavram", puan: 1, soru: "'Ses duvarı' neyi ifade eder?",
+          secenekler: ["Fiziksel olarak aşılamaz bir engel", "Mach 1 civarında dalga sürüklemesinin aniden arttığı geçiş bölgesi", "Sesin yok olduğu bölge", "Motorların durduğu irtifa"], dogru: 1,
+          aciklama: "Ses duvarı fiziksel bir engel değildir; Mach 1 civarında dalga sürüklemesinin ani artışına verilen isimdir." }
+      ],
+      ipuclari: {
+        "Formül": "Ma=V/a ve a=√(γRT) formüllerini birlikte kullan; ses hızı sıcaklığa bağlı.",
+        "Rejim": "Sesaltı <0,8 / Transonik 0,8-1,2 / Sesüstü 1,2-5 / Hipersonik >5 aralıklarını tekrar et.",
+        "Tasarım": "Ok kanat, delta kanat ve süperkritik profilin hangi Mach rejimleri için tasarlandığını eşleştir."
+      }
+    },
+"g14": {
+      ad: "Uçakların Sınıflandırılması",
+      ders: "Uçak Mühendisliğine Giriş",
+      seviye: "Temel",
+      sure: 16,
+      onbilgi: "Uçak Nasıl Hızlanıyor/Yavaşlıyor? (motor tipleri)",
+      guncelleme: "14 Eylül 2026",
+      icerikSurum: "1.0",
+      bolumler: [
+        { id: "b1", tip: "ozet", baslik: "Kısaca",
+          metin: "Uçaklar görevine, motor tipine, hız rejimine, boyutuna, kanat konfigürasyonuna ve sivil/askeri kullanımına göre sınıflandırılır. Bir mühendis olarak 'bu uçak neden böyle?' sorusunun cevabı, büyük ölçüde hangi sınıfa ait olduğundan çıkar." },
+
+        { id: "b2", tip: "tablo", baslik: "Göreve göre sınıflandırma",
+          basliklar: ["Kategori", "Örnekler"],
+          satirlar: [
+            ["Sivil yolcu taşımacılığı", "A320, B737, B787 (dar/geniş gövde), ATR 72 (turboprop bölgesel)"],
+            ["Kargo", "B747-8F, C-130 Hercules (askeri kargo)"],
+            ["Genel havacılık (GA)", "Cessna 172 (eğitim), Piper Cherokee, Cirrus SR22"],
+            ["İş jeti", "Gulfstream G650, Citation CJ serisi"],
+            ["Askeri savaş", "F-16 (çok rollü), F-35 (stealth), Eurofighter"],
+            ["İHA / Drone", "TB2 Bayraktar (taktik), ANKA (operasyonel), MQ-9 Reaper"],
+            ["Eğitim", "T-7A Red Hawk (askeri jet eğitim), Cessna 172 (sivil PPL eğitim)"],
+            ["Akrobasi / spor", "Extra 330, Pitts Special"]
+          ] },
+
+        { id: "b3", tip: "tablo", baslik: "Motor tipine göre sınıflandırma",
+          basliklar: ["Motor", "Tipik uçak"],
+          satirlar: [
+            ["Pistonlu/pervane", "Cessna 172, Piper Seneca"],
+            ["Turboprop", "ATR 72, C-130, Beechcraft King Air"],
+            ["Turbofan", "A320, B737, B777, F-16 (düşük bypass)"],
+            ["Turbojet", "Eski nesil askeri jetler, Concorde"],
+            ["Motorsuz (planör)", "ASW 27, Discus-2"]
+          ] },
+
+        { id: "b4", tip: "tablo", baslik: "Hız rejimine göre sınıflandırma",
+          basliklar: ["Rejim", "Tipik uçak"],
+          satirlar: [
+            ["Sesaltı (< Mach 0,8)", "Sivil uçakların çoğu, eğitim uçakları, turboproplar"],
+            ["Transonik (0,8-1,2)", "Modern yolcu jetleri (seyirde Mach 0,78-0,85)"],
+            ["Sesüstü (> Mach 1,2)", "F-16, F-22, Concorde (emekli), Eurofighter"],
+            ["Hipersonik (> Mach 5)", "X-15 (deneysel), scramjet prototipler, uzay araçları"]
+          ] },
+
+        { id: "b5", tip: "metin", baslik: "Sivil ve askeri havacılık farkları",
+          metin: "Sivil uçaklar sertifikasyon otoritelerine (EASA, FAA, SHGM) tabiidir; tasarımda emniyet, konfor ve yakıt verimliliği önceliktir. Askeri uçaklar ise görev performansına (manevra yeteneği, hız, silah kapasitesi, stealth) göre tasarlanır; yapısal yük limitleri sivil uçaklardan çok daha yüksektir (askeri: +9g / -3g vs sivil: +2,5g / -1g). Askeri uçaklar genelde düşük bypass veya turbojet motorlarla yüksek hız elde ederken, sivil uçaklar yüksek bypass turbofanlarla verim sağlar." },
+
+        { id: "b6", tip: "liste", baslik: "Yaygın hatalar",
+          maddeler: [
+            "Her jet motorlu uçağın savaş uçağı olduğunu sanmak; sivil yolcu uçaklarının neredeyse tamamı turbofan (jet) kullanır.",
+            "Turboprop'u eski teknoloji sanmak; kısa mesafede ve kısa pistlerde turboprop hâlâ en verimli seçenektir.",
+            "İHA'ların sadece askeri olduğunu sanmak; sivil İHA'lar tarım, haritalama, teslimat gibi alanlarda yaygınlaşıyor.",
+            "Planörlerin (motorsuz uçaklar) uçamayacağını sanmak; planörler termal ve yamaç rüzgârlarını kullanarak saatlerce havada kalabilir."
+          ] },
+
+        { id: "b7", tip: "mulakat", baslik: "Mülakatta nasıl sorulur?",
+          sorular: [
+            ["Uçakları kaç farklı kritere göre sınıflandırabilirsiniz?", "Göreve (yolcu, kargo, savaş, eğitim, İHA), motor tipine (pistonlu, turboprop, turbofan, turbojet, motorsuz), hız rejimine (sesaltı, transonik, sesüstü, hipersonik), boyuta (hafif, orta, ağır), kanat konfigürasyonuna (üst/orta/alt, ok açılı/delta/düz) ve sivil/askeri kullanıma göre."],
+            ["Sivil ve askeri uçak tasarımındaki temel fark nedir?", "Sivil tasarım güvenlik, konfor ve yakıt verimini önceler (tipik yük limiti +2,5g); askeri tasarım görev performansını (manevra, hız, stealth, silah kapasitesi) önceler ve yapısal limitler çok daha yüksektir (+9g)."]
+          ] },
+
+        { id: "b8", tip: "kaynakca", baslik: "Kaynakça",
+          maddeler: [
+            "FAA. (2023). Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25C), Bölüm 1.",
+            "Raymer, D. P. (2018). Aircraft design: A conceptual approach (6. baskı). AIAA.",
+            "Anderson, J. D., Jr. (2016). Introduction to flight (8. baskı). McGraw-Hill."
+          ] },
+
+        { id: "b9", tip: "video", baslik: "Videolar",
+          videolar: [
+            { ad: "Types of Aircraft Explained", kanal: "Aviation Ground School", dil: "İngilizce",
+              not: "Sivil, askeri ve genel havacılık uçaklarını kısa örneklerle kategorize ediyor.",
+              url: "https://www.youtube.com/watch?v=Pt24Pptvt_M" }
+          ] }
+      ],
+
+      sorular: [
+        { id: "g14s1", etiket: "Sınıflandırma", puan: 1, soru: "ATR 72 hangi motor tipine sahiptir?",
+          secenekler: ["Turbojet", "Turbofan", "Turboprop", "Pistonlu"], dogru: 2,
+          aciklama: "ATR 72, bölgesel taşımacılıkta kullanılan bir turboprop uçaktır." },
+        { id: "g14s2", etiket: "Sınıflandırma", puan: 1, soru: "F-16 hangi kategoriye girer?",
+          secenekler: ["Sivil eğitim uçağı", "Çok rollü askeri savaş uçağı", "Kargo uçağı", "Genel havacılık"], dogru: 1,
+          aciklama: "F-16, çok rollü (multirole) bir askeri savaş uçağıdır." },
+        { id: "g14s3", etiket: "Kavram", puan: 2, soru: "Sivil uçaklarda tipik yapısal yük limiti yaklaşık ne kadardır?",
+          secenekler: ["+2,5g / -1g", "+9g / -3g", "+1g / 0g", "+5g / -2g"], dogru: 0,
+          aciklama: "Sivil uçaklarda tipik yapısal limit +2,5g (pozitif) ve -1g (negatif) civarındadır; askeri uçaklarda çok daha yüksektir." },
+        { id: "g14s4", etiket: "Sınıflandırma", puan: 1, soru: "Planör (glider) hangi motor tipine sahiptir?",
+          secenekler: ["Turbofan", "Pistonlu", "Motorsuz — motor yok", "Turbojet"], dogru: 2,
+          aciklama: "Planörler motorsuz uçaklardır; termal ve yamaç rüzgârlarını kullanarak uçarlar." },
+        { id: "g14s5", etiket: "Kavram", puan: 2, soru: "Kısa pist ve kısa mesafeli bölgesel uçuşlarda hangi motor tipi en verimlidir?",
+          secenekler: ["Turbojet", "Turboprop", "Ramjet", "Roket motoru"], dogru: 1,
+          aciklama: "Turboprop, düşük/orta hızlarda ve kısa mesafelerde en verimli motor tipidir; kısa pist mesafesiyle çalışabilir." }
+      ],
+      ipuclari: {
+        "Sınıflandırma": "Her motor tipinin (pistonlu, turboprop, turbofan, turbojet) hangi uçak kategorisiyle eşleştiğini tekrar et."
+      }
+    },
+"g15": {
+      ad: "Bir Uçak Neden Böyle Tasarlanmış?",
+      ders: "Uçak Mühendisliğine Giriş",
+      seviye: "Orta",
+      sure: 18,
+      onbilgi: "Uçakların Sınıflandırılması, Mach Sayısı",
+      guncelleme: "14 Eylül 2026",
+      icerikSurum: "1.0",
+      bolumler: [
+        { id: "b1", tip: "ozet", baslik: "Kısaca",
+          metin: "Bir uçağın formu asla rastgele değildir — her geometrik seçim, görev gereksinimlerinin fizik yasalarıyla dengelenmesinden doğar. Bu ders, şimdiye kadar öğrendiğin tüm kavramları (kuvvet dengesi, kanat tipleri, motor türleri, Mach rejimleri, yapı tipleri) birleştirerek 'bu uçak neden böyle?' sorusunu cevaplamayı öğretir." },
+
+        { id: "b2", tip: "metin", baslik: "Tasarım spirali: görev → gereksinim → form",
+          metin: "Uçak tasarımı bir kerelik bir karar değil, yinelemeli bir süreçtir (tasarım spirali). Adımları:\n1. Görev tanımı: ne taşınacak, ne kadar uzağa, hangi hızda, hangi pist uzunluğundan?\n2. Gereksinimler: kaç yolcu, menzil (km), seyir hızı (Mach), kalkış/iniş mesafesi, maliyet.\n3. Konfigürasyon seçimi: kanat tipi, motor tipi, gövde genişliği, kuyruk düzeni.\n4. Boyutlandırma: kanat alanı, motor itkisi, yakıt kapasitesi.\n5. Performans doğrulama: hesaplar + rüzgâr tüneli/CFD testleri → gereksinimleri karşılıyor mu?\n6. Yeterli değilse 3. adıma dön ve tekrarla.\nBu spiralde her karar diğerini etkiler — örneğin motor büyütülürse ağırlık artar, ağırlık artarsa kanat alanı büyümeli, alan büyürse sürükleme artar..." },
+
+        { id: "b3", tip: "tablo", baslik: "Görev → konfigürasyon örnekleri",
+          basliklar: ["Görev", "Tipik seçimler ve sebebi"],
+          satirlar: [
+            ["Kısa mesafe bölgesel (ATR 72)", "Turboprop (kısa pistte verimli), üstten kanat (kısa iniş takımı, kolay kargo), düz kanat (düşük hızda yüksek verim)"],
+            ["Orta menzil dar gövde (A320)", "Yüksek bypass turbofan (verim+sessizlik), alttan kanat (iniş takımı kolaylığı), geriye ok kanat (transonik seyir)"],
+            ["Uzun menzil geniş gövde (B787)", "Çok yüksek bypass turbofan, yüksek AR kanat (indüklenmiş sürükleme min.), kompozit gövde (hafiflik+korozyon direnci)"],
+            ["Hava üstünlüğü (F-22)", "Düşük bypass turbofan (supercruise), delta benzeri kanat (yüksek manevra), stealth geometri, +9g yapısal limit"],
+            ["Taktik İHA (TB2)", "Pistonlu motor (basit, ucuz, uzun süzülme), yüksek AR kanat (uzun havada kalma süresi), hafif kompozit yapı"]
+          ] },
+
+        { id: "b4", tip: "metin", baslik: "Ödünleşmeler (trade-offs)",
+          metin: "Uçak tasarımında 'bedava öğle yemeği' yoktur — her iyileştirmenin bir bedeli vardır:\nYüksek AR (ince uzun kanat) → indüklenmiş sürükleme düşer ama yapısal ağırlık ve eğilme momenti artar.\nDelta kanat → süpersonik verim yüksek ama düşük hızda kalkış/iniş mesafesi uzun.\nKompozit yapı → hafif ve korozyona dayanıklı ama üretim maliyeti yüksek, hasar tespiti zor.\nYüksek bypass motor → sessiz ve verimli ama motor çapı büyük, yer mesafesi kısıtlaması olabilir.\n\nBir mühendis olarak işin, bu ödünleşmeleri görev gereksinimlerine göre en iyi dengeyi kurmaktır." },
+
+        { id: "b5", tip: "ornek", baslik: "Vaka: B787 neden kompozit gövdeli?",
+          soru: "Boeing 787 Dreamliner'ın gövde ve kanat yapısının %50'den fazlası neden karbon fiber kompozittir?",
+          cozum: "787'nin görevi uzun menzil, yüksek yakıt verimidir. Kompozit, alüminyuma göre yaklaşık %20 daha hafiftir → daha az yakıt. Korozyona uğramadığı için kabin nem oranı yükseltilebilir (yolcu konforu). Yorulma davranışı farklıdır → bakım aralıkları uzar. Bedeli: üretim maliyeti yüksek ve hasar tespiti (delaminasyon) daha zor." },
+
+        { id: "b6", tip: "liste", baslik: "Yaygın hatalar",
+          maddeler: [
+            "Bir uçağın 'en iyi' konfigürasyonu olduğunu sanmak; en iyi konfigürasyon göreve göre değişir.",
+            "Tasarımın bir kez yapılıp bittiğini sanmak; tasarım spirali yinelemeli bir süreçtir, her adım diğerini etkiler.",
+            "Sadece aerodinamiğe bakıp yapısal ağırlığı unutmak; yüksek AR kanat aerodinamik olarak harika ama yapısal maliyeti var.",
+            "Kompozitin her zaman metalden 'daha iyi' olduğunu sanmak; asıl avantajı özgül dayanımdır, her durumda en iyi seçim olmayabilir (maliyet, onarılabilirlik)."
+          ] },
+
+        { id: "b7", tip: "mulakat", baslik: "Mülakatta nasıl sorulur?",
+          sorular: [
+            ["Bir uçağın kanat tipini ne belirler?", "Görev profili: seyir Mach sayısı, menzil ve manevra gereksinimi. Düşük hızda düz kanat verimli; transonik seyirde geriye ok kanat şok dalgasını geciktirir; süpersonikte delta kanat gerekir. Her seçimin yapısal ağırlık, iniş mesafesi ve maliyet bedeli vardır."],
+            ["Tasarım spirali nedir?", "Görev tanımından konfigürasyon seçimine, boyutlandırmaya, performans doğrulamaya uzanan ve gerekirse başa dönerek tekrarlanan yinelemeli bir süreçtir; her karar diğerini etkiler."]
+          ] },
+
+        { id: "b8", tip: "kaynakca", baslik: "Kaynakça",
+          maddeler: [
+            "Raymer, D. P. (2018). Aircraft design: A conceptual approach (6. baskı). AIAA.",
+            "Anderson, J. D., Jr. (2016). Introduction to flight (8. baskı). McGraw-Hill.",
+            "Torenbeek, E. (2013). Advanced aircraft design. Wiley."
+          ] }
+      ],
+
+      sorular: [
+        { id: "g15s1", etiket: "Tasarım", puan: 2, soru: "Kısa mesafe bölgesel uçuşlarda neden turboprop tercih edilir?",
+          secenekler: ["Daha hızlı olduğu için", "Kısa pist mesafesinde en verimli motor tipi olduğu için", "En ucuz motor olduğu için", "Daha sessiz olduğu için"], dogru: 1,
+          aciklama: "Turboprop, düşük/orta hızlarda ve kısa pist mesafelerinde en verimli motor tipidir." },
+        { id: "g15s2", etiket: "Trade-off", puan: 2, soru: "Yüksek Aspect Ratio (ince uzun) kanadın dezavantajı nedir?",
+          secenekler: ["Aerodinamik verim düşer", "İndüklenmiş sürükleme artar", "Yapısal ağırlık ve kanat kökündeki eğilme momenti artar", "Kalkış mesafesi kısalır"], dogru: 2,
+          aciklama: "Yüksek AR indüklenmiş sürüklemeyi azaltır ama kanat uzadıkça yapısal ağırlık ve eğilme momenti artar." },
+        { id: "g15s3", etiket: "Kavram", puan: 1, soru: "Tasarım spiralinin temel özelliği nedir?",
+          secenekler: ["Tek seferlik bir karar sürecidir", "Yinelemeli (iteratif) bir süreçtir, gerekirse başa döner", "Sadece aerodinamiği kapsar", "Sadece motor seçimini belirler"], dogru: 1,
+          aciklama: "Tasarım spirali, her adımın diğerini etkilediği yinelemeli bir süreçtir; performans doğrulama başarısız olursa konfigürasyon seçimine dönülür." },
+        { id: "g15s4", etiket: "Vaka", puan: 2, soru: "B787'nin kompozit gövde kullanmasının temel sebebi nedir?",
+          secenekler: ["Görünüm güzelliği", "Hafiflik → yakıt verimliliği + korozyonsuz yapı → konfor artışı", "Motor gücünü artırmak", "Pist mesafesini kısaltmak"], dogru: 1,
+          aciklama: "Kompozit, alüminyuma göre ~%20 daha hafif olduğundan yakıt verimliliği artar; korozyona uğramadığı için kabin nem oranı yükseltilebilir (yolcu konforu)." },
+        { id: "g15s5", etiket: "Trade-off", puan: 2, soru: "Delta kanatın düşük hızdaki dezavantajı nedir?",
+          secenekler: ["Süpersonik verim düşüktür", "Kalkış ve iniş mesafesi uzar", "Yapısal olarak zayıftır", "Motor yerleştirilmesi imkânsızdır"], dogru: 1,
+          aciklama: "Delta kanat süpersonikte etkili ama düşük hızlarda yüksek hücum açısı gerektirdiğinden kalkış/iniş mesafesi uzar." }
+      ],
+      ipuclari: {
+        "Trade-off": "Her konfigürasyon seçiminin bir artısı ve bir bedeli olduğunu hatırla; 'bedava öğle yemeği' yok.",
+        "Vaka": "Bir uçağın neden böyle tasarlandığını açıklarken görev→gereksinim→form zincirini kullan."
+      }
+    },
+"g16": {
+      ad: "Bir Uçağa Mühendis Gözüyle Bakalım",
+      ders: "Uçak Mühendisliğine Giriş",
+      seviye: "Orta",
+      sure: 18,
+      onbilgi: "Bir Uçak Neden Böyle Tasarlanmış? + önceki tüm dersler",
+      guncelleme: "14 Eylül 2026",
+      icerikSurum: "1.0",
+      bolumler: [
+        { id: "b1", tip: "ozet", baslik: "Kısaca",
+          metin: "Bu ders, modülün kapanış pratiğidir. Bir mühendis olarak bir uçağa baktığında artık her formu okuyabilmelisin: kanat geometrisinden görev profilini, motor tipinden hız rejimini, gövde yapısından yük taşıma felsefesini çıkarabilmelisin. Burada Boeing 737 üzerinden adım adım bir mühendislik gözlem pratiği yapacağız." },
+
+        { id: "b2", tip: "metin", baslik: "Adım 1: Kanat formu — ne söylüyor?",
+          metin: "B737: alttan kanatlı, geriye ok açılı (25° ok açısı), orta-yüksek AR.\nAlttan kanat → iniş takımı kanada toplanabilir, yer etkisinden (ground effect) faydalanır.\nGeriye ok → transonik seyir hızı (Mach ~0,78); şok dalgası oluşumunu geciktirir.\nOrta-yüksek AR → indüklenmiş sürüklemeyi azaltıp yakıt verimliliğini artırır, ama çok uzun kanat değil (yapısal ağırlık ve apron uyumu dengesi).\nSonuç: bu uçak orta menzil, sesaltı/transonik seyir, yüksek yakıt verimliliği için tasarlanmış." },
+
+        { id: "b3", tip: "metin", baslik: "Adım 2: Motor tipi — ne söylüyor?",
+          metin: "B737 NG/MAX: yüksek bypass turbofan (CFM56 / LEAP-1B), bypass oranı ~5-9:1.\nYüksek bypass → düşük gürültü, yüksek yakıt verimliliği, sesaltı seyir için optimize.\nKanat altına monte edilmiş → bakım erişimi kolay, motor ağırlığı kanadı aşağı iterek uçuşta eğilme momentini azaltır (relief load).\nSonuç: ekonomik sivil taşımacılık için optimize edilmiş itki sistemi." },
+
+        { id: "b4", tip: "metin", baslik: "Adım 3: Gövde yapısı — ne söylüyor?",
+          metin: "B737: dar gövde (single-aisle), 3+3 oturma, yarı monokok alüminyum yapı.\nDar gövde → kısa-orta mesafe operasyonu, hızlı yolcu indirme/bindirme (turnaround).\nYarı monokok → yük dağıtılmış, hasar toleranslı. Tek koridorlu düzen → 150-200 yolcu kapasitesi.\nBasınçlandırma: kabin, 8000 ft basınç irtifasında tutulur, dış basınç çok düşükken iç-dış basınç farkını bulkhead'ler ve gövde kabuğu taşır." },
+
+        { id: "b5", tip: "metin", baslik: "Adım 4: Kumanda yüzeyleri — ne söylüyor?",
+          metin: "B737: aileron (roll), elevator (pitch), rudder (yaw) + iç/dış spoiler + LE slat + TE flap (Krueger flap dahil).\nÇift yarıklı Fowler flap → C_L,max'ı ciddi artırıp kısa piste iniş/kalkışı mümkün kılıyor.\nKanat ön kenarında slat → stall açısını geciktirip düşük hız güvenliğini artırıyor.\nSpoileron → düşük hızda aileron etkinliğini destekliyor; iniş sonrası ground spoiler olarak fren verimliliğini artırıyor.\nBu kombinasyon, uçağın hem yüksek hızda verimli hem düşük hızda güvenli olmasını sağlıyor." },
+
+        { id: "b6", tip: "metin", baslik: "Adım 5: Kuyruk düzeni — ne söylüyor?",
+          metin: "B737: konvansiyonel kuyruk (yatay stabilizer + elevator, dikey stabilizer + rudder).\nYatay kuyruk kanat arkasında → CG'nin önünde olmasından kaynaklanan pitch-down momentini dengeliyor.\nDikey kuyruk → yönsel kararlılık (yaw damping) sağlıyor.\nKonvansiyonel düzen → basit, güvenilir, bakım kolay. T-kuyruk (bazı bölgesel uçaklarda) veya V-kuyruk (deneysel) gibi alternatifler, belirli görev profillerinde avantaj sağlar." },
+
+        { id: "b7", tip: "metin", baslik: "Sentez: tek bakışta mühendislik okuması",
+          metin: "Bir uçağa baktığında şu zincirlemeyi kurabilmelisin:\nKanat formu → hız rejimi + aerodinamik felsefe\nMotor tipi → görev menzili + verim önceliği\nGövde → yolcu/kargo kapasitesi + yapısal felsefe\nKumanda yüzeyleri → düşük/yüksek hız performans dengesi\nKuyruk düzeni → kararlılık yaklaşımı\n\nBu beş adım, herhangi bir uçağa (askeri, sivil, İHA) uygulanabilir. 'Bu uçak neden böyle?' sorusunun cevabı bu beş katmanda gizlidir." },
+
+        { id: "b8", tip: "ornek", baslik: "Pratik: F-16'yı oku",
+          soru: "F-16'nın dışından bakarak hangi mühendislik kararlarını çıkarabilirsin?",
+          cozum: "Kanat: gövde ile bütünleşik (blended wing-body) delta benzeri form, orta kanat → yüksek manevra, düşük radar kesit alanı, süpersonik yetenek.\nMotor: tek motor, düşük bypass turbofan (F110/F100) → yüksek itki/ağırlık oranı, supercruise potansiyeli.\nGövde: dar, aerodinamik → minimum sürükleme.\nHava girişi: gövde altında sabit geometrili giriş → basit, hafif.\nKuyruk: tek dikey stabilizer + all-moving horizontal tail (stabilatör) → yüksek α manevralarda etkinlik.\nSonuç: çok rollü, yüksek manevra kabiliyetli, sesüstü kapasiteli bir savaş uçağı." },
+
+        { id: "b9", tip: "liste", baslik: "Pratik kontrol listesi: herhangi bir uçağı okumak için",
+          maddeler: [
+            "Kanat: üst/orta/alt? Düz/ok/delta? AR yüksek mi düşük mü? → hız rejimi ve aerodinamik felsefe.",
+            "Motor: pistonlu/turboprop/turbofan/turbojet? Kaç adet, nereye monte? → görev ve verim ipucu.",
+            "Gövde: dar/geniş? Yapı tipi? → kapasite ve mesafe.",
+            "Kumanda yüzeyleri: hangi flap/slat/spoiler kombinasyonu? → düşük hız/yüksek hız dengesi.",
+            "Kuyruk: konvansiyonel/T/V/canard? → kararlılık ve manevra yaklaşımı."
+          ] },
+
+        { id: "b10", tip: "mulakat", baslik: "Mülakatta nasıl sorulur?",
+          sorular: [
+            ["Bir uçağın dışından bakarak hangi mühendislik kararlarını çıkarabilirsiniz?", "Kanat formundan hız rejimini ve aerodinamik felsefeyi, motor tipinden görev menzili ve verim önceliğini, gövdeden kapasite ve yapı felsefesini, kumanda yüzeylerinden düşük/yüksek hız dengesini, kuyruktan kararlılık yaklaşımını çıkarabilirim."],
+            ["Neden B737 geriye ok açılı kanat kullanır?", "Seyir hızı Mach ~0,78 olduğundan, transonik rejimde kanat üzerindeki şok dalgası oluşumunu geciktirmek ve dalga sürüklemesini azaltmak için geriye ok açılı kanat seçilmiştir."]
+          ] },
+
+        { id: "b11", tip: "kaynakca", baslik: "Kaynakça",
+          maddeler: [
+            "Raymer, D. P. (2018). Aircraft design: A conceptual approach (6. baskı). AIAA.",
+            "Anderson, J. D., Jr. (2016). Introduction to flight (8. baskı). McGraw-Hill.",
+            "Brady, C. (2023). The Boeing 737 Technical Guide. www.b737.org.uk"
+          ] }
+      ],
+
+      sorular: [
+        { id: "g16s1", etiket: "Okuma", puan: 2, soru: "Alttan kanatlı, geriye ok açılı, yüksek bypass turbofan motorlu bir uçak büyük olasılıkla hangi kategoridedir?",
+          secenekler: ["Askeri savaş uçağı", "Sivil orta/uzun menzil yolcu jeti", "Eğitim uçağı", "Akrobasi uçağı"], dogru: 1,
+          aciklama: "Bu kombinasyon (alttan kanat + ok açı + yüksek bypass turbofan), sivil yolcu jetlerinin (A320, B737, B777 gibi) karakteristik özelliğidir." },
+        { id: "g16s2", etiket: "Okuma", puan: 2, soru: "Yüksek AR düz kanatlı, turboproplu bir uçak büyük olasılıkla hangi göreve yöneliktir?",
+          secenekler: ["Süpersonik savaş", "Kısa mesafe bölgesel taşımacılık veya gözetleme/İHA", "Uzun menzil kıtalararası uçuş", "Akrobasi"], dogru: 1,
+          aciklama: "Yüksek AR düz kanat düşük hızda verimli, turboprop kısa mesafede verimli → bölgesel taşımacılık veya uzun süzülme görevleri (İHA/gözetleme)." },
+        { id: "g16s3", etiket: "Sentez", puan: 2, soru: "Bir uçağın kanat altında büyük çaplı motorlar görüyorsanız, bu motorlar büyük olasılıkla hangi tiptedir?",
+          secenekler: ["Turbojet (düşük bypass)", "Turboprop", "Yüksek bypass turbofan", "Ramjet"], dogru: 2,
+          aciklama: "Büyük çaplı motor kılıfı (nacelle), yüksek bypass turbofanın belirgin özelliğidir; büyük fan çapı bypass oranını artırır." },
+        { id: "g16s4", etiket: "Okuma", puan: 2, soru: "Delta kanat + tek motor + dar gövdeli bir uçağın hız rejimi büyük olasılıkla nedir?",
+          secenekler: ["Sesaltı (< Mach 0,8)", "Transonik (0,8-1,2)", "Sesüstü (> Mach 1,2)", "Hipersonik (> Mach 5)"], dogru: 2,
+          aciklama: "Delta kanat süpersonik uçuş için optimize edilmiştir; tek motor + dar gövde bu uçağın askeri bir savaş jeti olduğuna işaret eder." },
+        { id: "g16s5", etiket: "Sentez", puan: 2, soru: "B737'nin motorları kanat altına monte edilmesinin yapısal avantajı nedir?",
+          secenekler: ["Sürüklemeyi artırır", "Motor ağırlığı kanadı aşağı iterek uçuşta eğilme momentini azaltır (relief load)", "Gürültüyü artırır", "Bakımı zorlaştırır"], dogru: 1,
+          aciklama: "Motor ağırlığı kanat altında olduğundan, uçuşta taşımanın yukarı ittiği kanadı aşağı çekerek eğilme momentini kısmen dengler (relief load); bu da kanat yapısını hafifletmeye yardımcı olur." }
+      ],
+      ipuclari: {
+        "Okuma": "Kanat formu+motor tipi kombinasyonundan görev profilini çıkarmayı pratik et.",
+        "Sentez": "Beş adımı (kanat, motor, gövde, kumanda, kuyruk) sırayla uygula ve her birinin ne söylediğini bağla."
       }
     },
 "m3-2": {
